@@ -194,14 +194,28 @@ namespace MyHomeWork
 
         private void button1_Click(object sender, EventArgs e)
         {
-            //未完成
-            //var q = from o in dbContext.Order_Details
+            //todo未完成
+            var q = (from d in dbContext.Order_Details.AsEnumerable()
+                    from o in dbContext.Orders
+                    group d by $"{o.Employee.FirstName}  {o.Employee.LastName}" into g
+                    select new
+                    {Name =g.Key,Money = g.Sum(d => (int)d.UnitPrice*d.Quantity*(1-d.Discount))})
+                    .OrderByDescending(d=>d.Money).Take(5);
+            dataGridView1.DataSource = q.ToList();
         }
 
         private void button7_Click(object sender, EventArgs e)
         {
             var q = dbContext.Products.Where(p => p.UnitPrice > 300);
             MessageBox.Show(q.ToList().Count()>0?"True":"False");
+        }
+
+        private void button9_Click(object sender, EventArgs e)
+        {
+            var q = (dbContext.Products.OrderByDescending(p => p.UnitPrice).Select(p => 
+            new { 商品=p.ProductName,單價=p.UnitPrice,種類=p.Category.CategoryName })).Take(5) ;
+            dataGridView2.DataSource = q.ToList();
+
         }
     }
 }

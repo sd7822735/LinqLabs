@@ -289,8 +289,9 @@ namespace MyHomeWork
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(538, 42);
             this.button9.TabIndex = 91;
-            this.button9.Text = "     NW 產品最高單價前 5 筆 (包括類別名稱)";
+            this.button9.Text = "     NW 產品最高單價前 5 筆 (包括類別名稱)(完成)";
             this.button9.UseVisualStyleBackColor = false;
+            this.button9.Click += new System.EventHandler(this.button9_Click);
             // 
             // button2
             // 
@@ -373,7 +374,7 @@ namespace MyHomeWork
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(538, 42);
             this.button1.TabIndex = 125;
-            this.button1.Text = "銷售最好的top 5業務員";
+            this.button1.Text = "銷售最好的top 5業務員(完成，但耗能)";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
